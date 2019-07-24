@@ -1,11 +1,17 @@
 import React from 'react'
- 
+import Chat  from './components/Chat'
+import './App.css'
 const App = () =>{
-      return(
-          <div>
-                <h1>Welcome to the chat component</h1>
-          </div>
-      )
+       const  launchChat = () =>{
+               
+  
+        }  
+    
+    return(
+            <div>
+                <Chat />
+            </div>
+        )
 }
 
 
