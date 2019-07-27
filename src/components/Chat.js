@@ -1,6 +1,9 @@
 import React , {useState} from 'react'
 import {Launcher} from 'react-chat-window'
 import {Modal , Button} from 'react-bootstrap'
+import openSocket  from 'socket.io-client'
+//import js file
+import  {sendMessage ,newMessage}  from '../utils/chat'
 
 class Chat extends React.Component{
       constructor(){
@@ -10,11 +13,12 @@ class Chat extends React.Component{
                  show : false,
                  message:"test",
                  send:false,
-                 incoming:false
+                 incoming:false,
+                 message_list  : []
+                                }
 
-             }
-      }
-
+                               
+            }
       handleClose  =() =>{
                     this.setState({show:false})
       }
@@ -23,53 +27,51 @@ class Chat extends React.Component{
                     this.setState({show:true})
       }
 
-    
       onChange =(e)=>{
           let name = e.target.name;
           let value =  e.target.value   
         this.setState({
                 [name]: value
-           })
+           });
       }  
 
       sendMessage=()=>{
-         return(
-          <div className="speech-bubble" >
-          {this.state.message}
-     </div>
-         )
-      }
+             sendMessage(this.state.message)
+             newMessage();
+            }
+      
 
       receiveMessage =()=>{
-          return(
-            <div className="speech-bubble2">
-            hola
-       </div>
-          )
+           
       }
-      
+    
+      renderMessages = ()=>{
+        return this.state.message_list
+      }
 
       render(){
   
     
      return(
-               <div>
+               <div className="" >
       <Button variant="primary" onClick={this.handleShow}>
         Launch demo modal
       </Button>
 
-      <Modal show={this.state.show} onHide={this.handleClose}>
+      <Modal size="lg"  className="modal_height  " show={this.state.show} onHide={this.handleClose}>
         <Modal.Header className="test" closeButton>
           <Modal.Title className="modal_header"  >Messenger</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-
+    <h1></h1>
        
-    <div class="container">
-    {this.state.send ? this.sendMessage() : null }
-   <input  class="form-control" name="message"  onChange={e=>{this.onChange(e)}} type="text-area"/>
-   <button type="button"  className="btn btn-primary" onClick={this.setState({send:true})} > Send </button>
-
+    <div className="container_custom ">
+    <div className="chat_container">
+   <div id="test">{}</div>
+ </div>
+   <input  className="form-control" name="message"  onChange={this.onChange}   type="text-area"/>
+   <button type="button"  className="btn btn-primary btn_pad" onClick={this.sendMessage} > Send </button>
+ 
     </div>
    
         </Modal.Body>

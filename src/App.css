@@ -228,21 +228,33 @@
 	position: relative;
 	background: yellowgreen;
     border-radius: .5em;
-    height: 40px;
+    height: 60px;
+    width:200px;
+    max-width:400px;
     text-align: center;
     color: white;
     padding-top:10px;
     margin-top: 15px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+
 }
 
 .speech-bubble2 {
-	position: relative;
+  position: relative;
 	background: rgb(0, 255, 34);
     border-radius: .5em;
-    height: 40px;
     text-align: center;
     color:white;
+    min-height:1.5em;
     padding-top:10px;
+    width: auto;
+    height: auto;
+    max-width:300px;
+    margin-top: 15px;
+    margin-bottom: 10px;
+    padding: 15px;
+    word-wrap: break-word;
 
 }
 
@@ -255,12 +267,30 @@
 	width: 0;
 	height: 0;
 	border: 2px solid transparent;
-	border-left-color: #00aabb;
+	border-left-color:yellowgreen;
 	border-right: 0;
 	border-top: 0;
 	margin-top: -1px;
 	margin-right: -2px;
 }
+.speech-bubble2:after {
+  content: '';
+  display: block;
+  position: absolute;
+	left: 0%;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color:rgb(0, 255, 34);
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+  margin-left: -20px;
+  z-index: 1;
+
+}
+
 
 .box {
     width: 300px;
@@ -272,4 +302,45 @@
     color: #fff;
     font-family: arial;
     position:relative;
+  }
+
+  .modal_height{
+       height: 1200px;
+  }
+
+  .chat{
+      overflow-y: auto;
+  }
+
+  .chat_container{
+    height: 440px;
+  }
+
+  .modal_width{
+       max-width: 100%;
+  }
+   
+  .btn_pad{
+     margin-top: 10px;
+     background-color: yellowgreen
+  }
+
+  /*chat container d*/
+  .container_custom{
+  width :700px;
+  margin: 0 auto;
+  border :solid 1px #ccc;
+  border-radius :5px;
+  overflow: hidden;}
+
+  .chat_container{
+     height: 500px;
+     width: 800px;
+     overflow: auto; 
+  }
+
+  .message{
+    direction: ltr;
+    box-sizing:border-box;
+  
   }
